@@ -43,10 +43,10 @@ namespace BananaFarmParagon
 {
     public class Main : BloonsTD6Mod
     {
-        public override void OnNewGameModel(GameModel gameModel, Il2CppSystem.Collections.Generic.List<ModModel> mods)
+        public override void OnNewGameModel(GameModel gameModel)
         {
 
-            gameModel.GetParagonUpgradeForTowerId("BananaFarm").cost = CostHelper.CostForDifficulty(Settings.ParagonCost, mods);
+            gameModel.GetParagonUpgradeForTowerId("BananaFarm").cost = CostHelper.CostForDifficulty(Settings.ParagonCost, gameModel);
 
             foreach (var towerModel in gameModel.towers)
             {
@@ -220,7 +220,8 @@ namespace BananaFarmParagon
                 towerModel.AddBehavior(Game.instance.model.GetTowerFromId("BananaFarm-005").GetBehavior<CollectCashZoneModel>().Duplicate());
                 towerModel.GetBehavior<CollectCashZoneModel>().collectRange = 1;
                 towerModel.GetBehavior<CollectCashZoneModel>().attractRange = 9999999;
-                towerModel.GetBehavior<CollectCashZoneModel>().speed = 1;
+                // CollectCashZoneModel.speed was removed from the game (replaced by lerpMultiplier);
+                // the value duplicated from the vanilla collector is kept as-is.
             }
         }
     }
