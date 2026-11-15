@@ -3,7 +3,7 @@ namespace BananaFarmParagon
     public static class ModHelperData
     {
         public const string WorksOnVersion = "57.4";
-        public const string Version = "2.1.1";
+        public const string Version = "2.1.2";
         public const string Name = "Banana Farm Paragon Reborn";
         public const string Author = "Jonyboylovespie, PrymalInstynct";
         public const string Description =

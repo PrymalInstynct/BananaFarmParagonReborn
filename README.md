@@ -8,8 +8,9 @@ This is a fork of [Banana Farm Paragon](https://github.com/Jonyboylovespie/Banan
 The original stopped loading after game updates and was last changed in April 2024. This fork repairs it for the
 current game and reworks how the Paragon earns money.
 
-> **Status:** version 2.1.1 builds and installs, but has not yet been played through a full match.
-> Treat the numbers below as the design, not as measured results.
+> **Status:** version 2.1.2 has been played in a live match: crates are produced, collect themselves and pay the
+> amounts below, and income follows Paragon degree. The pop cash bonus, the research boost and saving and
+> reloading have not been checked yet.
 
 ## What the Paragon does
 
@@ -17,7 +18,7 @@ current game and reworks how the Paragon earns money.
 
 | Ability | Effect |
 | --- | --- |
-| Crates | Produces 10 crates every round. They never rot. |
+| Crates | Produces 10 crates every round. They do not rot. |
 | Collection | Pulls in its own crates and every other banana on the map, the way Monkey Wall Street does for nearby farms. |
 | Research boost | Keeps Banana Central's boost to Banana Research Facilities and applies it to the whole map. |
 | Pop cash | Every pop on the map is worth more cash. Stacks with a Monkey Town. |
@@ -68,7 +69,7 @@ Changes take effect in the next match you start.
 
 ## What changed from the original
 
-| | Original 1.0.7 | Reborn 2.1.0 |
+| | Original 1.0.7 | Reborn 2.1.2 |
 | --- | --- | --- |
 | Loads on the current game | No | Yes |
 | Income per round | $1,000,000 at any degree | $25,000 to $125,000 by degree |
@@ -93,7 +94,7 @@ Changes take effect in the next match you start.
 
 ## Known limitations
 
-- Not yet tested through a full match, including saving and reloading.
+- The pop cash bonus, the research boost, and saving and reloading are not yet verified in a match.
 - A degree change may release one extra batch of crates in that round.
 - The original mod's startup warning from Mod Helper (`NullReferenceException` in `ModVanillaParagon.get_Name`)
   still appears in the log. The Paragon registers correctly despite it.
