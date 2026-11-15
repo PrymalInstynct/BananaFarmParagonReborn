@@ -8,7 +8,7 @@ This is a fork of [Banana Farm Paragon](https://github.com/Jonyboylovespie/Banan
 The original stopped loading after game updates and was last changed in April 2024. This fork repairs it for the
 current game and reworks how the Paragon earns money.
 
-> **Status:** version 2.1.0 builds and installs, but has not yet been played through a full match.
+> **Status:** version 2.1.1 builds and installs, but has not yet been played through a full match.
 > Treat the numbers below as the design, not as measured results.
 
 ## What the Paragon does

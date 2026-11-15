@@ -86,6 +86,7 @@ namespace BananaFarmParagon
             if (degree < 1) return;
 
             var root = tower.rootModel.Cast<TowerModel>();
+            LogStatus(current, degree);
             if (Balance.Matches(root, degree)) return;
 
             var updated = root.Duplicate();
@@ -95,6 +96,25 @@ namespace BananaFarmParagon
             ModHelper.Msg<Main>($"Banana Farm Paragon degree {degree}: " +
                                 $"${Balance.IncomePerRound(degree):N0} per round, " +
                                 $"x{Balance.PopCashMultiplier(degree):0.00} cash per pop.");
+        }
+
+        private static int statusTicks;
+
+        /// <summary>
+        /// Every ten seconds, record what the live Paragon is set to produce and the player's cash,
+        /// so a test match shows in the log whether income arrives.
+        /// </summary>
+        private static void LogStatus(TowerModel live, int degree)
+        {
+            if (statusTicks++ % 10 != 0) return;
+
+            var weapon = live.GetAttackModel().weapons[0];
+            var cash = weapon.projectile.GetBehavior<CashModel>();
+            var age = weapon.projectile.GetBehavior<AgeModel>();
+            ModHelper.Msg<Main>($"Status: round {InGame.instance.bridge.GetCurrentRound() + 1}, " +
+                                $"cash ${InGame.instance.bridge.GetCash():N0}, degree {degree}, " +
+                                $"{weapon.GetBehavior<EmissionsPerRoundFilterModel>().count} crates x ${cash.minimum:N0}, " +
+                                $"weapon rate {weapon.Rate}, crate lifespan {age.Lifespan}s");
         }
 
         public override void OnMainMenu()
@@ -226,9 +246,13 @@ namespace BananaFarmParagon
                 var weapon = towerModel.GetAttackModel().weapons[0];
 
                 // Crates wait to be collected instead of rotting, as in the original mod.
+                // 2.1.0 copied the original mod's "Lifespan = 0", and the Paragon then produced no crates at all:
+                // a zero lifespan most likely expires each crate the moment it spawns. Use a long lifespan instead.
                 var age = weapon.projectile.GetBehavior<AgeModel>();
-                age.Lifespan = 0;
-                age.rounds = 9999999;
+                ModHelper.Msg<Main>($"Vanilla crate age: lifespan {age.Lifespan}s, rounds {age.rounds}, " +
+                                    $"useRoundTime {age.useRoundTime}; weapon rate {weapon.Rate}, " +
+                                    $"fireWithoutTarget {weapon.fireWithoutTarget}");
+                age.Lifespan = 9999;
 
                 // Banana Central's boost to Banana Research Facilities, now map-wide.
                 var central = towerModel.GetBehavior<BananaCentralBuffModel>();
