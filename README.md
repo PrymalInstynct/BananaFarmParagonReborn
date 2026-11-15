@@ -8,7 +8,7 @@ This is a fork of [Banana Farm Paragon](https://github.com/Jonyboylovespie/Banan
 The original stopped loading after game updates and was last changed in April 2024. This fork repairs it for the
 current game and reworks how the Paragon earns money.
 
-> **Status:** version 2.0.0 builds and installs, but has not yet been played through a full match.
+> **Status:** version 2.1.0 builds and installs, but has not yet been played through a full match.
 > Treat the numbers below as the design, not as measured results.
 
 ## What the Paragon does
@@ -68,7 +68,7 @@ Changes take effect in the next match you start.
 
 ## What changed from the original
 
-| | Original 1.0.7 | Reborn 2.0.0 |
+| | Original 1.0.7 | Reborn 2.1.0 |
 | --- | --- | --- |
 | Loads on the current game | No | Yes |
 | Income per round | $1,000,000 at any degree | $25,000 to $125,000 by degree |
@@ -116,9 +116,10 @@ The build also copies the DLL into `$BloonsTD6/Mods`.
 ## Credits
 
 - Original mod: [Jonyboylovespie](https://github.com/Jonyboylovespie)
-- Texture: PipDragon
-- Upgrade icon: Keetsoona
-- Tower portrait: Connor Conntroller
+- Art in 2.1.0: portrait and upgrade icon generated with ChatGPT image generation to a purple and gold tycoon
+  brief; the model texture is the game's own Banana Farm texture sheet recoloured to match.
+- Art in the original mod (replaced in 2.1.0): texture by PipDragon, upgrade icon by Keetsoona, tower portrait by
+  Connor Conntroller.
 
 The original repository has no published license, so this fork does not add one. It is shared in the same
 community spirit as the original, and the credits above stay with it.
